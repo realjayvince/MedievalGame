@@ -48,8 +48,36 @@ public class MedievalGame {
   /* Instance Methods */
   private Player start(Scanner console) {
     // Add start functionality here
+    Player player;
+    return player;
+    Art.homeScreen();
+    System.out.println("Would you like to start a new game or load a saved game?");
+    System.out.println("Enter 'Y' to load a game or 'n' to create a new game:");
+    
+     while(true){
+        String answer = console.next().toLowerCase();
+        if (answer.equals("y")){
+        System.out.println("Enter previous character name");
+        String name = console.next();
 
-    return new Player("Test");
+        player.load(name, console);
+
+        break;
+        } else if (answer.equals("n")){
+          System.out.println("Please enter desired player name: ");
+          String newName = console.next();
+
+          player = new Player(newName);
+
+          break;
+        } else {
+          System.out.println("Please enter 'y' to load or 'n' to start a new character");
+        }
+     
+      
+
+    }
+
   } // End of start
 
   private void save() {
@@ -84,7 +112,7 @@ public class MedievalGame {
       loadedPlayer = new Player(playerName);
 
     }
-    return new loadedPlayer;
+    return loadedPlayer;
   } // End of load
 
   // Adds a delay to the console so it seems like the computer is "thinking"
