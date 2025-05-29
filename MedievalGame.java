@@ -72,9 +72,16 @@ public class MedievalGame {
     try {
       FileInputStream savedFile = new FileInputStream(filename);
       ObjectInputStream playerSaved = new ObjectInputStream(savedFile);
+      
+      loadedPlayer = (Player) savedFile.readObject();
 
-      return loadedplayer;
+      return loadedPlayer;
     } catch (IOException | ClassNotFoundException e){
+      game.addDelay(1500);
+      System.out.println("File not found");
+
+      game.addDelay(2000);
+      loadedPlayer = new Player(playerName);
 
     }
     return new loadedPlayer;
